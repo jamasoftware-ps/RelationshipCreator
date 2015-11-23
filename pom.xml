@@ -45,7 +45,7 @@
     </build>
 
     <groupId>com.jamasoftware.relationshipimporter</groupId>
-    <artifactId>RelationshipImporter</artifactId>
+    <artifactId>RelationshipCreator</artifactId>
     <version>1.0</version>
     <dependencies>
         <dependency>
