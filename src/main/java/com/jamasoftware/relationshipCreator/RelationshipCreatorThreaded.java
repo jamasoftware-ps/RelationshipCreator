@@ -42,7 +42,7 @@ public class RelationshipCreatorThreaded implements Runnable {
                 payload.append(row[2]);
 			}
 			payload.append("}");
-			Response response = RestClient.post(config.getBaseURL() + "relationships/",
+			Response response = RestClient.post(config, config.getBaseURL() + "v1/" + "relationships/",
 					payload.toString(),
 					config.getCredentials(),
                     config.getDelay());

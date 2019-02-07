@@ -39,12 +39,12 @@ public class ItemMapper {
 
         while (resultCount != 0) {
             ProgressRecord.startBatch();
-            String url = baseURL + "abstractitems?itemType=" +
+            String url = baseURL + "v1/" + "abstractitems?itemType=" +
                     itemTypeId + "&maxResults=" +
                     maxResults + "&project=" +
                     projectId + "&startAt=" +
                     startIndex;
-            Response response = RestClient.get(url,
+            Response response = RestClient.get(config, url,
                     config.getCredentials(),
                     config.getDelay());
             if(response.getStatusCode() >= 400) {

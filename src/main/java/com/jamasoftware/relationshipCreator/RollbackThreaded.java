@@ -30,9 +30,10 @@ public class RollbackThreaded implements Runnable {
 			String row = list.get(i);
             StringBuilder url = new StringBuilder(200);
             url.append(config.getBaseURL());
+            url.append("v1/" );
             url.append("relationships/");
             url.append(row);
-			Response response = RestClient.delete(url.toString(),
+			Response response = RestClient.delete(config, url.toString(),
 					config.getCredentials(),
                     config.getDelay());
 			if (response.getStatusCode() < 400) {

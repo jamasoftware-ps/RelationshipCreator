@@ -44,8 +44,8 @@ public class Rollback {
         int totalRecords = list.size();
 		for (int i = 0, j = 0; i < list.size(); ++i) {
 			String row = list.get(i);
-            String url = config.getBaseURL() + "relationships/" + row;
-			Response response = RestClient.delete(url,
+            String url = config.getBaseURL() + "v1/" + "relationships/" + row;
+			Response response = RestClient.delete(config, url,
 					config.getCredentials(),
                     config.getDelay());
 			if (response.getStatusCode() < 400) {
