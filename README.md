@@ -42,11 +42,19 @@ Change these options as required (in step 2 above).
 
 ```delimiter = <single character> ``` -- A single character, usually a comma or semicolon.  This character is what separates elements of the CSV file.  It’s also used in the lists in the rest of this file. 
 
+-- CHOOSE 1 Authentication method, fill in the appropriate settings, Leave the other set empty, but do not delete the option entry--
+-- To Use Basic Auth Enter your Username and Password, Leave ClientID and ClientSecret set to the empty string. --
+-- To Enable OAuth Enter your ClientID an ClientSecret, Leave Username and Password set to the empty string.--
+
 ```username = <string> ``` -- Jama username. 
 
 ```password = <string> ``` -- Jama password. 
 
-```baseURL = <string> ``` -- The base URL of the Jama instance. For hosted this is {base url}/rest/latest/ For on-prem it’s {base url}/contour/rest/latest/ 
+```clientID = <string>``` -- Jama Oauth Client ID
+
+```clientSecret = <string>``` -- Jama Oauth Client Secret
+
+```baseURL = <string> ``` -- The base URL of the Jama instance. For hosted this is {base url}/rest/ For on-prem it’s {base url}/contour/rest/
 
 ```csvFile = <string> ``` -- The name of a CSV file in the same directory as the JAR file. 
 

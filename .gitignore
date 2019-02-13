@@ -1,0 +1,6 @@
+target/
+*.iml
+import.cfg
+*.csv
+classes/
+*idea/

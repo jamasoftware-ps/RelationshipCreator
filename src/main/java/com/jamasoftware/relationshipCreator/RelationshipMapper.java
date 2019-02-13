@@ -38,8 +38,8 @@ public class RelationshipMapper {
         JSONParser parser = new JSONParser();
 
         while(resultCount != 0) {
-            String url = config.getBaseURL() + "relationshiptypes?startAt=" + startIndex;
-            Response response = RestClient.get(url, config.getCredentials(), config.getDelay());
+            String url = config.getBaseURL() + "v1/"+ "relationshiptypes?startAt=" + startIndex;
+            Response response = RestClient.get(config, url, config.getCredentials(), config.getDelay());
             if(response.getStatusCode() > 400) {
                 System.out.println("Received " + response.getStatusCode() + " while trying to retrieve relationship types.");
                 System.out.println("Aborting.");
@@ -72,7 +72,7 @@ public class RelationshipMapper {
 
     public void testRelationshipType(String[] row, StringBuilder errorDescription) {
         if(row[2] != null) {
-            Integer relationshipType = relationshipTypes.get(row[2]);
+            Integer relationshipType = relationshipTypes.get(row[2].toLowerCase());
             if (relationshipType == null) {
                 errorDescription.append("Relationship type \"");
                 errorDescription.append(row[2]);

@@ -14,18 +14,21 @@ import java.util.HashMap;
 public class Config {
 
     private UsernamePasswordCredentials credentials;
+    private String clientID;
+    private String clientSecret;
+
     private String baseURL;
     private String csvFile;
-
     private int columnAItemType;
+
     private String columnAFieldName;
     private int[] columnAProjects;
-
     private int columnBItemType;
+
     private String columnBFieldName;
     private int[] columnBProjects;
-
     private String delimiter;
+
     private int delay;
     private int retries;
     private String parseErrors = "";
@@ -33,6 +36,8 @@ public class Config {
             "delimiter",
             "username",
             "password",
+            "clientID",
+            "clientSecret",
             "baseURL",
             "csvFile",
             "columnAItemTypeAPI-ID",
@@ -45,13 +50,20 @@ public class Config {
             "retries"
     };
     private ArrayList<String> configFile = new ArrayList<String>();
-
     public Config() {
         HashMap<String, String[]> params = getParams();
-        String username = params.get("username")[0];
-        String password = params.get("password")[0];
+        if(params.get("username").length < 1 || !"".equals(params.get("username")[0])){
+            System.out.println("Connecting via basic auth.");
+            String username = params.get("username")[0];
+            String password = params.get("password")[0];
+            credentials = new UsernamePasswordCredentials(username, password);
+        }
+        else if(params.get("clientID") != null){
+            System.out.println("Connecting via OAuth.");
+            clientID = params.get("clientID")[0];
+            clientSecret = params.get("clientSecret")[0];
+        }
 
-        credentials = new UsernamePasswordCredentials(username, password);
 
         baseURL = params.get("baseURL")[0];
         csvFile = params.get("csvFile")[0];
@@ -127,6 +139,22 @@ public class Config {
 
     public String getColumnBFieldName() {
         return columnBFieldName;
+    }
+
+    public String getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(String clientID) {
+        this.clientID = clientID;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 
     public String getDelimiter() {
