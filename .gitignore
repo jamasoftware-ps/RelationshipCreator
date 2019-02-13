@@ -4,3 +4,4 @@ import.cfg
 *.csv
 classes/
 *idea/
+.DS_Store
